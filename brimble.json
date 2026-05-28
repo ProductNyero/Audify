@@ -1,0 +1,21 @@
+{
+  "$schema": "https://brimble.io/schema.json",
+  "name": "file-to-speech",
+  "framework": "docker",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "ports": [
+    {
+      "internal": 3000,
+      "external": 80
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "PIPER_BIN": "piper",
+    "PIPER_MODEL": "/app/models/en_US-amy-medium.onnx",
+    "MAX_UPLOAD_MB": "5",
+    "MAX_TEXT_CHARS": "10000"
+  }
+}

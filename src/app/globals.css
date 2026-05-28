@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  /* Single accent kept as a CSS var so the background blob and any future
+     accent surfaces stay in sync. */
+  --accent: 99 102 241; /* indigo-500 */
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  /* Calm, near-black canvas with one faint accent bloom in the top-right.
+     Replaces the previous double-gradient that read as too "marketing-y".
+     The blob is intentionally low-opacity so headings stay the focal point. */
+  background:
+    radial-gradient(
+      900px 500px at 85% -10%,
+      rgba(var(--accent) / 0.08),
+      transparent 60%
+    ),
+    #0a0a0b;
+  color: #ededee;
+  font-family:
+    var(--font-inter),
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  font-feature-settings:
+    "cv11" 1,
+    "ss01" 1,
+    "ss03" 1;
+  letter-spacing: -0.005em;
+  text-rendering: optimizeLegibility;
+}
+
+/* Visible-only focus ring that respects keyboard users without polluting
+   mouse-click states. Matches the Linear / Vercel pattern. */
+:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.55);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* The native HTML audio element uses dark-mode-aware controls when the page
+   declares color-scheme: dark, so we let the browser handle it instead of
+   forcing custom skinning. */
+audio {
+  width: 100%;
+}
