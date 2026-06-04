@@ -60,7 +60,6 @@ RUN mkdir -p /app/models \
 
 # Copy the standalone Next.js build. `output: "standalone"` in next.config.mjs
 # produces /app/.next/standalone/server.js plus a minimal node_modules tree.
-COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
