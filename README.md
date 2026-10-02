@@ -1,11 +1,13 @@
 # Audify
 
 Upload a `.txt`, `.md`, or `.docx` file, get back a `.wav` you can play and download.
-Piper runs on the machine hosting the application - through [Piper TTS](https://github.com/rhasspy/piper) — no paid APIs, no login, no database, no stored history.. With a hosted deployment, uploaded documents are processed on the server. 
+Piper runs on the machine hosting the application - through [Piper TTS](https://github.com/rhasspy/piper) — no paid APIs, no login, no database, no stored history. With a hosted deployment, uploaded documents are processed on the server. 
 
 Markdown files are passed through [`remove-markdown`](https://www.npmjs.com/package/remove-markdown) first so headings, links, code fences, and emphasis don't get read aloud literally.
 
-**Tables** in `.md`, `.docx`, and `.txt` files are detected and converted into prose before synthesis (intro that names the columns once, then one sentence per row). See [Table narration](#table-narration) below.
+**Tables** in `.md`, `.docx`, and `.txt` files are detected and converted into prose before synthesis (each populated cell becomes a sentence, with its column heading repeated for context). 
+
+PDF uploads are not supported. By default, conversion is limited to the first 10,000 characters of prepared text.
 
 ```
 ┌────────────┐   multipart/form-data   ┌────────────────────┐    stdin     ┌────────┐
@@ -39,9 +41,8 @@ brimble.json                      # Brimble project config
 ```
 
 
-
 ## Privacy
 
 - Uploaded files are parsed in memory; the raw bytes never touch disk.
-- The generated WAV is written to an OS temp directory, read back into memory, and the temp directory is deleted in a `finally` block before the response is sent.
+- The generated WAV is written to an OS temp directory, read back into memory, and deletion of the temp directory is attempted in a finally block before the response is sent.
 - There is no database, no logging of file contents, and no auth layer — keep the deployment behind your own access control if you process sensitive documents.
