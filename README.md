@@ -37,7 +37,6 @@ scripts/
 └── download-voice.sh             # grabs a voice from Hugging Face
 models/                           # voice .onnx + .onnx.json files live here
 Dockerfile                        # Node + Python + Piper + model, all baked
-brimble.json                      # Brimble project config
 ```
 
 
