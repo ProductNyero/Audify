@@ -1,5 +1,5 @@
 {
-  "name": "file-to-speech",
+  "name": "audify",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -31,5 +31,10 @@
   },
   "engines": {
     "node": ">=20.0.0"
+  },
+  "overrides": {
+    "next": {
+      "postcss": "$postcss"
+    }
   }
 }

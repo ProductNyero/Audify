@@ -1,6 +1,6 @@
 {
   "$schema": "https://brimble.io/schema.json",
-  "name": "file-to-speech",
+  "name": "audify",
   "framework": "docker",
   "build": {
     "dockerfile": "Dockerfile"

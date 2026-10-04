@@ -10,9 +10,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Turn study notes into audiobooks",
+  title: "Audify- Turn study notes into audiobooks",
   description:
-    "Upload a TXT, DOCX, or Markdown file and convert it into clear narrated audio you can preview and download. Runs locally on Piper TTS.",
+    "Audify converts a TXT, DOCX, or Markdown file and convert it into clear narrated audio you can preview and download. Runs locally on Piper TTS.",
 };
 
 export default function RootLayout({
